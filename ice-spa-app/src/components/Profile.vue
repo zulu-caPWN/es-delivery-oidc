@@ -31,6 +31,7 @@ export default {
     getAccessToken().then(token => this.accessToken = token.accessToken);
     getIdToken().then(token => {
       this.idToken = token.idToken;
+
     });
   }
 }

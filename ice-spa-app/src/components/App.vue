@@ -8,6 +8,7 @@
           <li><router-link to="/home">Home</router-link></li>
           <li><router-link to="/profile">My Profile</router-link></li>
           <li><router-link to="/premium-promos">Premium Promos</router-link></li>
+
         </ul>
       </div>
     </nav>
