@@ -10,7 +10,7 @@ import router from '../router' //router: required to redirect users
 // const SCOPES = ['openid', 'profile', 'email'];
 // const CUSTOM_AUTHN_PAGE = 'http://localhost:8082/osw_complete.html';
 // const CUSTOM_AUTHN_STATE_URL = CUSTOM_AUTHN_PAGE + '?relayState=' + window.location.origin + '/retrieveTokensXHR';
-// const WORKFORCE_IDENTITY_MODE = false;
+// const WORKFORCE_IDENTITY_MODE = true;
 
 //variables
 // var state = '/profile'; // default page
