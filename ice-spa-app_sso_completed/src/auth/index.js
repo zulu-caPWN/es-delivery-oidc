@@ -107,7 +107,7 @@ export function validateAccess(to, from, next) {
       OKTA_AUTH_JS.tokenManager.clear();
       if (WORKFORCE_IDENTITY_MODE) {
         router.push('/retrieveTokensRedirect');
-      } else { // CIAM MODE
+      } else { // Customer Identity Mode
         sessionStorage.setItem('state', state);
         window.location.replace(CUSTOM_AUTHN_STATE_URL);
       }

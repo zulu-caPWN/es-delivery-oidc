@@ -102,7 +102,7 @@ export function validateAccess(to, from, next) {
 export function logout() {
   if (WORKFORCE_IDENTITY_MODE) {
 
-  } else { //CIAM mode
+  } else { // Customer Identity Mode
 
   }
 }
