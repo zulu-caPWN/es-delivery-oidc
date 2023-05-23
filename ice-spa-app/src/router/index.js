@@ -8,7 +8,7 @@ import ProfileComponent from "@/views/Profile";
 import PromosView from "@/views/Promos";
 // import Login view
 import LoginView from "@/views/Login";
-
+import { setOriginalUri } from "../main";
 const routes = [
   {
     path: "/",
@@ -33,11 +33,12 @@ const routes = [
   {
     path: "/profile",
     component: ProfileComponent,
-    meta: { requiresAuth: true },
+    // meta: { requiresAuth: true },
   },
   {
     path: "/promos",
     component: PromosView,
+    // meta: { requiresAuth: true },
   },
   {
     path: "/login",
@@ -50,7 +51,8 @@ const router = createRouter({
   routes,
 });
 
-// use navigation guard logic to circumvent nabigational guard mixin issues in vue-router-next
+// use navigation guard logic to circumvent navigational guard mixin issues in vue-router-next
 // provided by the Okta Vue SDK
 router.beforeEach(navigationGuard);
+router.afterEach(setOriginalUri);
 export default router;
