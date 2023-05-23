@@ -25,7 +25,11 @@ export default {
       await this.$auth.signInWithRedirect({ originalUri: "/" });
     },
     async logout() {
+      // Ends Okta Session
       await this.$auth.signOut();
+      // Logs User out of App but does not end Okta Session
+      // await this.$auth.tokenManager.clear();
+      // router.push("/");
     },
   },
 };

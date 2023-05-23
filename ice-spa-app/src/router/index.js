@@ -8,7 +8,7 @@ import ProfileComponent from "@/views/Profile";
 import PromosView from "@/views/Promos";
 // import Login view
 import LoginView from "@/views/Login";
-import { setOriginalUri } from "../main";
+// import { setOriginalUri } from "../main";
 const routes = [
   {
     path: "/",
@@ -54,5 +54,5 @@ const router = createRouter({
 // use navigation guard logic to circumvent navigational guard mixin issues in vue-router-next
 // provided by the Okta Vue SDK
 router.beforeEach(navigationGuard);
-router.afterEach(setOriginalUri);
+// router.afterEach(setOriginalUri);
 export default router;
