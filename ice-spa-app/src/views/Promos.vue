@@ -4,22 +4,6 @@
       <div class="col-md-10 offset-md-1" id="content-container">
         <h1>Promos</h1>
         <div v-if="promos.length">
-          <div v-if="idToken">
-            <button
-              class="btn btn-primary"
-              id="premiumPromos"
-              v-on:click="getPromos()"
-            >
-              Premium Promos
-            </button>
-            <button
-              class="btn btn-primary"
-              id="publicPromos"
-              v-on:click="getPublicPromos()"
-            >
-              Public Promos
-            </button>
-          </div>
           <table class="table table-striped" id="promos">
             <thead>
               <tr>
@@ -39,49 +23,47 @@
             </tbody>
           </table>
         </div>
-        <div v-else>
-          No promos found. Check if API resource server is running.
-        </div>
+        <div v-else>No promos found.</div>
       </div>
     </div>
   </div>
   <Footer />
 </template>
-
 <script>
 // @ is an alias to /src
 import Footer from "@/components/Footer.vue";
-// import {getAuthHeader} from "@/main.js"
-const API_URL = "http://localhost:8081";
-
 export default {
   name: "Promos",
-  components: {
-    Footer,
-  },
+  components: { Footer },
   data() {
-    return {
-      promos: [],
-      idToken: Boolean,
-    };
+    return { promos: [] };
   },
   methods: {
-    async getPromos() {
-      const res = await fetch(API_URL + "/promos/PREMIUM");
-      this.promos = await res.json();
-      document.getElementById("premiumPromos").style.display = "none";
-      document.getElementById("publicPromos").style.display = "inline";
-    },
     async getPublicPromos() {
-      const res = await fetch(API_URL + "/publicpromos");
-      this.promos = await res.json();
-      this.idToken = await this.$auth.tokenManager.get("idToken");
-      this.idToken = this.idToken ? true : false;
-
-      if (this.idToken) {
-        document.getElementById("publicPromos").style.display = "none";
-        document.getElementById("premiumPromos").style.display = "inline";
-      }
+      const VALIDITY = 30;
+      let endPromo = new Date();
+      endPromo.setDate(endPromo.getDate() + VALIDITY);
+      const END_DATE = endPromo.toDateString();
+      this.promos = [
+        {
+          code: "10OFFICE",
+          validFor: VALIDITY,
+          target: "PUBLIC",
+          endDate: END_DATE,
+          description: "Okta Ice is cool. 10% off for everybody",
+          meta: { revision: 0, created: 1684907456701, version: 0 },
+          $loki: 1,
+        },
+        {
+          code: "WILLYVANILLY",
+          validFor: VALIDITY,
+          target: "PUBLIC",
+          endDate: END_DATEs,
+          description: "15% off the new Vanilla collection",
+          meta: { revision: 0, created: 1684907456701, version: 0 },
+          $loki: 2,
+        },
+      ];
     },
   },
   mounted() {
