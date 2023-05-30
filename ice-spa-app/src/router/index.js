@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/views/Home.vue";
 // import LoginCallback and navigationGuard
-import { LoginCallback, navigationGuard } from "@okta/okta-vue";
+//import { LoginCallback, navigationGuard } from "@okta/okta-vue";
 // import the Profile view
 import ProfileComponent from "@/views/Profile";
 // import Apps view
@@ -25,10 +25,10 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
   // new route for the callback
-  {
-    path: "/login/callback",
-    component: LoginCallback,
-  },
+  // {
+  //   path: "/login/callback",
+  //   component: LoginCallback,
+  // },
   // add Profile route
   {
     path: "/profile",
@@ -53,6 +53,6 @@ const router = createRouter({
 
 // use navigation guard logic to circumvent navigational guard mixin issues in vue-router-next
 // provided by the Okta Vue SDK
-router.beforeEach(navigationGuard);
+// router.beforeEach(navigationGuard);
 // router.afterEach(setOriginalUri);
 export default router;

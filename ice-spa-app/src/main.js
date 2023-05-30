@@ -4,7 +4,7 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 
-import myConfig from "@/config";
+//import myConfig from "@/config";
 
 // instantiate an OktaAuth object with the settings in config.js
 // const oktaAuth = new OktaAuth(myConfig.oidc);
@@ -29,6 +29,6 @@ createApp(App)
 export async function setOriginalUri() {
   const uris = ["/", "/login/callback"];
   if (!uris.includes(window.location.pathname)) {
-    oktaAuth.setOriginalUri(window.location.href);
+    //oktaAuth.setOriginalUri(window.location.href);
   }
 }

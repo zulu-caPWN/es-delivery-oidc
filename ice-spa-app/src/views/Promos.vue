@@ -58,7 +58,7 @@ export default {
           code: "WILLYVANILLY",
           validFor: VALIDITY,
           target: "PUBLIC",
-          endDate: END_DATEs,
+          endDate: END_DATE,
           description: "15% off the new Vanilla collection",
           meta: { revision: 0, created: 1684907456701, version: 0 },
           $loki: 2,
