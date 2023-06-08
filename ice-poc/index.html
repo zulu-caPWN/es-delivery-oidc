@@ -22,6 +22,7 @@
         // Required Fields for OIDC client
         url: baseOktaURL,
         clientId: appClientID,
+        scopes: ["openid", "email", "profile"],
         redirectUri:
           window.location.protocol +
           "//" +
@@ -59,7 +60,10 @@
 
             // Display the Token
             const str1 = document.createElement("p");
-            str1.innerHTML = `<b>${idToken.claims.email}</b> (email)<br /><b>${
+
+            str1.innerHTML = `<b>${
+              idToken.claims.preferred_username
+            }</b> (preferred_username)<br /><b>${
               idToken.claims.sub
             }</b> (sub)<br /><br />Token Response:<br /><code style="word-wrap: break-word;">${JSON.stringify(
               idToken

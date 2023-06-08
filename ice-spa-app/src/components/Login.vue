@@ -18,6 +18,7 @@
 
 <!-- Script supporting the sign in and sign out actions -->
 <script>
+//import router from "../router/index";
 export default {
   name: "Login",
   methods: {

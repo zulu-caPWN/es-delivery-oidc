@@ -28,7 +28,10 @@
           </div>
         </div>
 
-        <div v-else>User not logged in.</div>
+        <div v-else class="alert alert-primary" role="alert">
+          No profile to show. User is either not logged in, or ID token has not
+          been parsed for display on this page.
+        </div>
       </div>
     </div>
   </div>

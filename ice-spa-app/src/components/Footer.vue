@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-10 offset-md-1 align-text-top" id="footer">
           <div class="divider mb-4"></div>
-          Copyright Okta Ice <span id="year"></span>
+          Copyright Okta Ice <span id="year">2023</span>
           <div class="divider mb-4"></div>
         </div>
       </div>
