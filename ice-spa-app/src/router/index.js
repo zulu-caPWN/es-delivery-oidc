@@ -1,24 +1,58 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from '@/components/Home'
-import Error from '@/components/Error'
-import Promo from '@/components/Promo'
-import Profile from '@/components/Profile'
-import { retrieveTokensRedirect, tokenCallback, validateAccess, retrieveTokensXHR, logout, setState } from '../auth'
+import { createRouter, createWebHistory } from "vue-router";
+import Home from "@/views/Home.vue";
+// import LoginCallback and navigationGuard
+//import { LoginCallback, navigationGuard } from "@okta/okta-vue";
+// import the Profile view
+import ProfileComponent from "@/views/Profile";
+// import Apps view
+import PromosView from "@/views/Promos";
+// import Login view
+import LoginView from "@/views/Login";
 
-Vue.use(Router)
+const routes = [
+  {
+    path: "/",
+    name: "Home",
+    component: Home,
+  },
+  {
+    path: "/about",
+    name: "About",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+  },
+  // new route for the callback
+  // {
+  //   path: "/login/callback",
+  //   component: LoginCallback,
+  // },
+  // add Profile route
+  {
+    path: "/profile",
+    component: ProfileComponent,
+    // meta: { requiresAuth: true },
+  },
+  {
+    path: "/promos",
+    component: PromosView,
+    // meta: { requiresAuth: true },
+  },
+  {
+    path: "/login",
+    component: LoginView,
+  },
+];
 
-export default new Router({
-  mode: 'history',
-  routes: [
-    //Public pages
-    { path: '*', redirect: '/home' }, //redirect to make sure you land in a page
-    { path: '/home', component: Home }, //home page
-    { path: '/error', component: Error },
-    //Private pages (displayed only user access is validated)
-    { path: '/premium-promos', component: Promo },
-    { path: '/profile', component: Profile },
-    //Functions without page
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  routes,
+});
 
-  ]
-})
+// use navigation guard logic to circumvent navigational guard mixin issues in vue-router-next
+// provided by the Okta Vue SDK
+// router.beforeEach(navigationGuard);
+
+export default router;
